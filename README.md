@@ -1,6 +1,5 @@
 # HTTPCodable
 [![Build Status](https://travis-ci.com/terwanerik/HTTPCodable.svg?branch=master)](https://travis-ci.com/terwanerik/HTTPCodable)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 HTTPCodable allows you to send HTTP requests (with Codable's as body) and get a Codable, wrapped in a Future, back. A picture is worth a thousand words:
 ```swift
@@ -79,8 +78,7 @@ Client.shared.delete("/todos/1", as: EmptyResponse.self).map { _ in
 
 ## Getting started
 
-HTTPCodable can be added to your project either using [Carthage](https://github.com/Carthage/Carthage) or Swift package manager.
-
+HTTPCodable can be added to your project either using Swift package manager.
 
 If you want to depend on HTTPCodable in your project, it's as simple as adding a `dependencies` clause to your `Package.swift`:
 
@@ -90,15 +88,7 @@ dependencies: [
 ]
 ```
 
-Or, add a dependency in your `Cartfile`:
-
-```
-github "terwanerik/HTTPCodable"
-```
-
-More details on using Carthage can be found [here](https://github.com/Carthage/Carthage#quick-start).
-
-Lastly, import the module in your Swift files
+Then you can import the module
 
 ```swift
 import HTTPCodable
