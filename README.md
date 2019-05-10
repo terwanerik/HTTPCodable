@@ -4,6 +4,13 @@
 
 HTTPCodable allows you to send HTTP requests (with Codable's as body) and get a Codable, wrapped in a Future, back. A picture is worth more than a thousand words:
 ```swift
+struct Todo: Codable {
+  var id: Int
+  var userId: Int
+  var title: String
+  var completed: Bool
+}
+
 let url = "https://jsonplaceholder.typicode.com/todos"
 
 Client.shared.get(url, as: [Todo].self).map { todos in
