@@ -2,7 +2,7 @@ import Foundation
 import Futures
 
 public final class Client: HTTPCodableClient {
-    static let shared = Client()
+    public static let shared = Client()
     
     public var currentSession: URLSessionDataTask?
     public var baseUrl: String?
