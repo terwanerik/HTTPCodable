@@ -21,6 +21,8 @@ Client.shared.get(url, as: [Todo].self).map { todos in
 It heavily relies on [Futures](https://github.com/formbound/Futures) and will return a Future for all requests.
 
 ## Examples
+Have a look at `HTTPCodableTests` for more examples, the code itself is also pretty explanatory.
+
 ```swift
 import HTTPCodable
 
@@ -74,8 +76,6 @@ Client.shared.delete("/todos/1", as: EmptyResponse.self).map { _ in
   // removed
 }
 ```
-
-Have a look at `HTTPCodableTests` for more examples, the code itself is also pretty explanatory.
 
 ## Getting started
 
