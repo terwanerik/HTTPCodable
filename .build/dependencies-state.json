@@ -1,0 +1,1 @@
+{"object": {"dependencies": [{"basedOn": null, "packageRef": {"identity": "futures", "isLocal": false, "name": "Futures", "path": "https://github.com/formbound/Futures.git"}, "state": {"checkoutState": {"branch": null, "revision": "33f0eb594c541680f86c9bea23fdc0a552e8d4e7", "version": "1.4.0"}, "name": "checkout"}, "subpath": "Futures"}]}, "version": 2}
