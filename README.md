@@ -78,22 +78,23 @@ Client.shared.delete("/todos/1", as: EmptyResponse.self).map { _ in
 
 ## Getting started
 
-HTTPCodable can be added to your project either using Swift package manager.
+HTTPCodable can be added to your project either using Swift package manager or manually (for now);
 
-If you want to depend on HTTPCodable in your project, it's as simple as adding a `dependencies` clause to your `Package.swift`:
-
+### SPM
+Add HTTPCodable as a dependency
 ```swift
 dependencies: [
     .package(url: "https://github.com/terwanerik/HTTPCodable.git", from: "0.1.0")
 ]
 ```
 
-Then you can import the module
-
+Then import the module
 ```swift
 import HTTPCodable
 ```
 
+### Manually
+Download one of the releases, and just drag the `/Sources/HTTPCodable` folder in Xcode. Make sure to install [Futures](https://github.com/formbound/Futures) as a framework (e.g. via Carthage)
 
 ### Supported Platforms
 
