@@ -4,7 +4,7 @@
 # Build generated
 build/
 DerivedData/
-*/xcuserdata/*
+*xcworkspace/xcuserdata/*
 
 # Obj-C/Swift specific
 *.hmap

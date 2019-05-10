@@ -189,6 +189,10 @@ final class HTTPCodableTests: XCTestCase {
             expectation.fulfill()
         }
         
+        future.defer {
+            Client.shared.baseUrl = nil
+        }
+        
         wait(for: [expectation], timeout: 10.0)
     }
     
