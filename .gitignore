@@ -1,0 +1,22 @@
+# Global
+.DS_Store
+
+# Build generated
+build/
+DerivedData/
+
+# Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+Packages/
+Package.pins
+Package.resolved
+.build/
+
+# Carthage
+Carthage/Checkouts
+Carthage/Build
