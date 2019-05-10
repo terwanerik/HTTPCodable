@@ -1,43 +1,32 @@
 version: 2
 
+version: 2
 jobs:
-  linux:
+  test:
     docker:
       - image: swift:4.2
     steps:
       - checkout
-      - run:
-          name: Debug build
-          command: swift build
-      - run:
-          name: Run unit tests
-          command: swift test
-
-  linux-latest:
+      - run: swift build
+      - run: swift test
+  test-latest:
     docker:
       - image: swift:latest
     steps:
       - checkout
-      - run:
-          name: Debug build
-          command: swift build
-      - run:
-          name: Run unit tests
-          command: swift test
-
-  linux-release:
+      - run: swift build
+      - run: swift test
+  build-release:
     docker:
       - image: swift:4.2
     steps:
       - checkout
-      - run:
-          name: Release build
-          command: swift build -c release
+      - run: swift build -c release
 
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - linux
-      - linux-latest
-      - linux-release
+      - test
+      - test-latest
+      - build-release
