@@ -22,6 +22,8 @@ It heavily relies on [Futures](https://github.com/formbound/Futures) and will re
 
 ## Examples
 ```swift
+import HTTPCodable
+
 /// Our object
 struct Todo: Codable {
   var id: Int
