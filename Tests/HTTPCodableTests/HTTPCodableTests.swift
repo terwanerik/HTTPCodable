@@ -173,7 +173,9 @@ final class HTTPCodableTests: XCTestCase {
         Client.shared.baseUrl = "https://jsonplaceholder.typicode.com/"
         
         let endpoint = "/todos/1"
-        let future = try! Client.shared.get(endpoint, as: Todo.self)
+        let future = try! Client.shared.get(endpoint, as: Todo.self).defer {
+            Client.shared.baseUrl = nil
+        }
         
         let expectation = XCTestExpectation(description: "Get a single Todo item")
         
@@ -187,10 +189,6 @@ final class HTTPCodableTests: XCTestCase {
             XCTAssert(false, "Got error: \(error)")
             
             expectation.fulfill()
-        }
-        
-        future.defer {
-            Client.shared.baseUrl = nil
         }
         
         wait(for: [expectation], timeout: 10.0)
