@@ -14,6 +14,9 @@ let url = "https://jsonplaceholder.typicode.com/todos"
 
 Client.shared.get(url, as: [Todo].self).map { todos in
   // todos is an array of Todo objects
+  return todos.filter { $0.completed }
+}.whenFulfilled { completed in
+  // completed is an array of completed todos
 }
 ```
 
@@ -43,35 +46,35 @@ struct TodoQuery: Codable {
 Client.shared.baseUrl = "https://jsonplaceholder.typicode.com/"
 
 // Simple GET
-Client.shared.get("/todos", as: [Todo].self).map { todos in
+Client.shared.get("/todos", as: [Todo].self).whenFulfilled { todos in
   // todos is an array of Todo objects
 }
 
 // GET with query
-Client.shared.get("/todos", as: [Todo].self, query: TodoQuery(id: nil, userId: 1, completed: false)).map { todos in
+Client.shared.get("/todos", as: [Todo].self, query: TodoQuery(id: nil, userId: 1, completed: false)).whenFulfilled { todos in
   // todos is an array of Todo objects, with userId=1 and completed=false
 }
 
 // Post
 let data = Todo(id: 1, userId: 1, title: "Foo", completed: true)
-Client.shared.post(data, to: "/todos", as: Todo.self).map { todo in
+Client.shared.post(data, to: "/todos", as: Todo.self).whenFulfilled { todo in
   // todo is our newly created todo
 }
 
 // Put
-Client.shared.put(data, to: "/todos/1", as: Todo.self).map { todo in
+Client.shared.put(data, to: "/todos/1", as: Todo.self).whenFulfilled { todo in
   // todo is our updated todo
 }
 
 // Put
-Client.shared.patch(data, to: "/todos/1", as: Todo.self).map { todo in
+Client.shared.patch(data, to: "/todos/1", as: Todo.self).whenFulfilled { todo in
   // todo is our patched todo
 }
 
 // Delete
 struct EmptyResponse: Codable {}
 
-Client.shared.delete("/todos/1", as: EmptyResponse.self).map { _ in
+Client.shared.delete("/todos/1", as: EmptyResponse.self).whenFulfilled { _ in
   // removed
 }
 ```
