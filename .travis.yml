@@ -1,4 +1,3 @@
 language: swift
 osx_image: xcode10.2
-script: swift build
 script: swift test
