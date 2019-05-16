@@ -1,5 +1,7 @@
 # HTTPCodable
 [![Build Status](https://travis-ci.com/terwanerik/HTTPCodable.svg?branch=master)](https://travis-ci.com/terwanerik/HTTPCodable)
+[![swift 4.2](https://img.shields.io/badge/swift-4.0%20%7C%204.2%20%7C%205.0-green.svg)](https://swift.org)
+[![osx | ubuntu | docker](https://img.shields.io/badge/platform-iOS%20%7C%20tvOS%20%7C%20macOS%20%7C%20linux-lightgrey.svg)](https://swift.org/download/#releases)
 
 HTTPCodable allows you to send HTTP requests (with Codable's as body) and get a Codable, wrapped in a Future, back. A picture is worth a thousand words:
 ```swift
