@@ -66,7 +66,7 @@ Client.shared.put(data, to: "/todos/1", as: Todo.self).whenFulfilled { todo in
   // todo is our updated todo
 }
 
-// Put
+// Patch
 Client.shared.patch(data, to: "/todos/1", as: Todo.self).whenFulfilled { todo in
   // todo is our patched todo
 }
