@@ -1,7 +1,7 @@
 import Foundation
 import Futures
 
-extension HTTPCodableClient {
+extension CodableClient {
     public func decode<T: Decodable>(data: Data, to type: T.Type) throws -> T {
         return try decoder.decode(T.self, from: data)
     }

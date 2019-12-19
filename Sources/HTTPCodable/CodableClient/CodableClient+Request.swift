@@ -1,7 +1,7 @@
 import Foundation
 import Futures
 
-extension HTTPCodableClient {
+extension CodableClient {
     private func strip(url: String) -> String {
         guard var baseUrl = baseUrl else { return url }
         
@@ -27,12 +27,18 @@ extension HTTPCodableClient {
     public func request(_ method: HTTPCodableMethod, url: String, body: Data? = nil,
                         query: Encodable? = nil) -> Future<Data>
     {
+        return request(method, url: url, body: body, query: query).future
+    }
+    
+    public func request(_ method: HTTPCodableMethod, url: String, body: Data? = nil,
+                        query: Encodable? = nil) -> DataResponse
+    {
         let promise = Promise<Data>()
         
         guard let url = generateUrl(from: url, with: query) else {
             promise.reject(HTTPCodableError.invalidUrl)
             
-            return promise.future
+            return (future: promise.future, task: nil)
         }
         
         var request = URLRequest(url: url,
@@ -43,7 +49,7 @@ extension HTTPCodableClient {
         
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        urlSession.dataTask(with: request) { (data, response, error) in
+        let task = urlSession.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 return promise.reject(error)
             }
@@ -53,8 +59,10 @@ extension HTTPCodableClient {
             }
             
             promise.fulfill(data)
-        }.resume()
+        }
         
-        return promise.future
+        task.resume()
+        
+        return (future: promise.future, task: task)
     }
 }
