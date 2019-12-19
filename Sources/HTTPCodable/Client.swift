@@ -1,7 +1,7 @@
 import Foundation
 import Futures
 
-public final class Client: HTTPCodableClient {
+public final class Client: CodableClient {
     public static let shared = Client()
     
     public var currentSession: URLSessionDataTask?
