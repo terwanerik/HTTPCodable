@@ -2,7 +2,7 @@ import Foundation
 import Futures
 
 extension CodableClient {
-    public func get<T: Decodable>(_ url: String, as type: T.Type,
+    public func get<T: Decodable>(with url: String, as type: T.Type,
                                   query: Encodable? = nil) throws -> Response<T>
     {
         let response: DataResponse = request(.get, url: url, body: nil, query: query)
@@ -15,12 +15,10 @@ extension CodableClient {
     public func get<T: Decodable>(_ url: String, as type: T.Type,
                                   query: Encodable? = nil) throws -> Future<T>
     {
-        let response: Response<T> = try get(url, as: T.self, query: query)
-        
-        return response.future
+        return try get(with: url, as: T.self, query: query).future
     }
     
-    public func post<T: Decodable, D: Encodable>(_ data: D? = nil, to url: String, as type: T.Type,
+    public func post<T: Decodable, D: Encodable>(with data: D? = nil, to url: String, as type: T.Type,
                                                  query: Encodable? = nil) throws -> Response<T>
     {
         let body = data != nil ? try encode(data: data!) : nil
@@ -34,12 +32,10 @@ extension CodableClient {
     public func post<T: Decodable, D: Encodable>(_ data: D? = nil, to url: String, as type: T.Type,
                                                  query: Encodable? = nil) throws -> Future<T>
     {
-        let response: Response<T> = try post(data, to: url, as: T.self, query: query)
-        
-        return response.future
+        return try post(with: data, to: url, as: T.self, query: query).future
     }
     
-    public func put<T: Decodable, D: Encodable>(_ data: D? = nil, to url: String, as type: T.Type,
+    public func put<T: Decodable, D: Encodable>(with data: D? = nil, to url: String, as type: T.Type,
                                                 query: Encodable? = nil) throws -> Response<T>
     {
         let body = data != nil ? try encode(data: data!) : nil
@@ -53,12 +49,10 @@ extension CodableClient {
     public func put<T: Decodable, D: Encodable>(_ data: D? = nil, to url: String, as type: T.Type,
                                                 query: Encodable? = nil) throws -> Future<T>
     {
-        let response: Response<T> = try put(data, to: url, as: T.self, query: query)
-        
-        return response.future
+        return try put(with: data, to: url, as: T.self, query: query).future
     }
     
-    public func patch<T: Decodable, D: Encodable>(_ data: D? = nil, to url: String, as type: T.Type,
+    public func patch<T: Decodable, D: Encodable>(with data: D? = nil, to url: String, as type: T.Type,
                                                   query: Encodable? = nil) throws -> Response<T>
     {
         let body = data != nil ? try encode(data: data!) : nil
@@ -72,12 +66,10 @@ extension CodableClient {
     public func patch<T: Decodable, D: Encodable>(_ data: D? = nil, to url: String, as type: T.Type,
                                                   query: Encodable? = nil) throws -> Future<T>
     {
-        let response: Response<T> = try patch(data, to: url, as: T.self, query: query)
-        
-        return response.future
+        return try patch(with: data, to: url, as: T.self, query: query).future
     }
     
-    public func delete<T: Decodable>(_ url: String, as type: T.Type,
+    public func delete<T: Decodable>(with url: String, as type: T.Type,
                                      query: Encodable? = nil) throws -> Response<T>
     {
         let response: DataResponse = request(.get, url: url, body: nil, query: query)
@@ -90,8 +82,6 @@ extension CodableClient {
     public func delete<T: Decodable>(_ url: String, as type: T.Type,
                                      query: Encodable? = nil) throws -> Future<T>
     {
-        let response: Response<T> = try delete(url, as: T.self, query: query)
-        
-        return response.future
+        return try delete(with: url, as: T.self, query: query).future
     }
 }

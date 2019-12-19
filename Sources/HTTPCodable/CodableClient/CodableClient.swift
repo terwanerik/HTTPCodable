@@ -20,19 +20,19 @@ public protocol CodableClient {
     func request(_ method: HTTPCodableMethod, url: String, body: Data?, query: Encodable?) -> DataResponse
     
     func get<T: Decodable>(_ url: String, as type: T.Type, query: Encodable?) throws -> Future<T>
-    func get<T: Decodable>(_ url: String, as type: T.Type, query: Encodable?) throws -> Response<T>
+    func get<T: Decodable>(with url: String, as type: T.Type, query: Encodable?) throws -> Response<T>
     
     func post<T: Decodable, E: Encodable>(_ data: E?, to url: String, as type: T.Type, query: Encodable?) throws -> Future<T>
-    func post<T: Decodable, E: Encodable>(_ data: E?, to url: String, as type: T.Type, query: Encodable?) throws -> Response<T>
+    func post<T: Decodable, E: Encodable>(with data: E?, to url: String, as type: T.Type, query: Encodable?) throws -> Response<T>
     
     func put<T: Decodable, E: Encodable>(_ data: E?, to url: String, as type: T.Type, query: Encodable?) throws -> Future<T>
-    func put<T: Decodable, E: Encodable>(_ data: E?, to url: String, as type: T.Type, query: Encodable?) throws -> Response<T>
+    func put<T: Decodable, E: Encodable>(with data: E?, to url: String, as type: T.Type, query: Encodable?) throws -> Response<T>
     
     func patch<T: Decodable, E: Encodable>(_ data: E?, to url: String, as type: T.Type, query: Encodable?) throws -> Future<T>
-    func patch<T: Decodable, E: Encodable>(_ data: E?, to url: String, as type: T.Type, query: Encodable?) throws -> Response<T>
+    func patch<T: Decodable, E: Encodable>(with data: E?, to url: String, as type: T.Type, query: Encodable?) throws -> Response<T>
     
     func delete<T: Decodable>(_ url: String, as type: T.Type, query: Encodable?) throws -> Future<T>
-    func delete<T: Decodable>(_ url: String, as type: T.Type, query: Encodable?) throws -> Response<T>
+    func delete<T: Decodable>(with url: String, as type: T.Type, query: Encodable?) throws -> Response<T>
     
     func decode<T: Decodable>(data: Data, to type: T.Type) throws -> T
     func encode<T: Encodable>(data: T) throws -> Data
